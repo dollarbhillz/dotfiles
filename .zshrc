@@ -109,18 +109,6 @@ fortune | cowsay | lolcat
 
 tabs 2
 
-rhpaste () {
-        local response=$(curl -i -F 'code2=<-' -F 'paste=Send' http://pastebin.test.redhat.com/pastebin.php 2>&1)
-        local rc=$?
-        if [ $rc -eq 0 ]
-        then
-                echo "$response" | sed -n 's/Location: //p'
-        else
-                echo "$response" >&2
-        fi
-        return $rc
-}
-
 # if a command takes longer than $REPORTTIME seconds to execute, show its execution
 # time, formatted according to $TIMEFMT
 export REPORTTIME=5
